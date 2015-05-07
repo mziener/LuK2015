@@ -1,0 +1,299 @@
+% Article template for Mathematics Magazine
+% Revised 7/2002  Thanks for Greg St. George
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\renewcommand{\baselinestretch}{1.2}
+%This is the command that spaces the manuscript for easy reading
+
+\begin{document}
+%\thispagestyle{empty}
+\begin{center}
+\Large
+% TITLE GOES HERE
+A Sample Article for  \textsc{ Mathematics Magazine}
+\end{center}
+
+\begin{flushright}
+Jack Q.~Firstauthor\footnote{Supported by the National Science
+Foundation.}  \\
+XXXX University \\
+City, State 98765-4321\\
+\verb+email@optional.edu+
+
+\vspace{2 mm}
+
+Jill P.~Secondauthor \\
+Department of Physics
+\footnote{Authors are in alphabetical order
+unless there is an extraordinary reason to do otherwise.  Also,
+the author address includes a department \emph{only} if
+the department is \emph{not} mathematics. We use as few
+footnotes as possible in the \textit{Magazine}.  This one, for instance,
+contains information that really belongs in the body of the paper.
+The previous footnote probably belongs among the Acknowledgments at the end.}\\
+ZZZZ College \\
+City, State 12345-6789
+\end{flushright}
+
+This document is meant to help you prepare an Article for
+submission to \textsc{Mathematics Magazine}.  Of course,
+editorial decisions depend entirely on
+what you say and how you say it. Nonetheless, we will all save
+time if you exercise some care in how you first present the paper.
+
+Now that I have caught your attention with an interesting introductory paragraph,
+here is what you will find:
+specific information about the style of Articles in the \textsc{Magazine}
+and a description of the \LaTeX\ code we prefer that you use
+to prepare your manuscript.
+
+Since this section is very clearly
+an introduction, I thought that labeling it ``Introduction" would add
+nothing.  Note that I am willing to use the first person in an Article
+and you might be as well.  Another equally respectable choice is ``we,''
+even when there is only one author; this can
+create an author-reader partnership to
+work through the mathematics together.
+Whatever voice you choose, consistency is important.
+
+You may be looking at this document in a variety of ways:  the .pdf or .ps files
+are meant to be viewed on a screen or printed, while
+the .tex file contains the codes used to create those
+viewable versions via the program \LaTeX.  Even if you are a novice with \TeX,
+there may be enough here to teach you what
+you need to know.  And if you are an ace with \TeX,
+we have a warning: please do not overload your
+document with special kludges and tricks that will
+only be removed later by our compositor.
+
+This document is prepared with extremely simple \LaTeX\ formatting,
+using the unadorned \verb+article+ template.
+It is designed for simplicity and ease of handling---not
+to imitate the \textsc{Magazine}'s final, typeset style in every
+detail.    For authors less familiar with \LaTeX, we offer a
+brief lesson, showing how certain common elements of mathematical
+style are typeset using this program.  For hardcore technical
+specifications, please see the Electronic Publication Guidelines~\cite{MAA}.
+
+\subsection*{Notes on writing an Article}
+Articles in the \textsc{Magazine} tend to be longer and
+more substantial than Notes,
+offering a broad overview of some field
+or making new connections.
+Being longer, they often
+benefit from more sectioning. We use
+the \verb+\subsection*+ command to create titles
+for these sections, which are not usually numbered
+(the \verb+*+ in \verb+\subsection*+ accomplishes this).
+
+To judge the length of your piece,  consider that
+this document prints to six pages with the current code, but would run
+about four pages in the \textsc{Magazine}.  The current settings produce
+a document that is generously spaced in consideration of
+referees' eyesight.
+
+Few pieces of mathematical writing are entirely self-contained,
+although we try to make Articles reasonably so.    Consider
+providing a section of background material that our
+more knowledgeable readers can skip. Define
+enough terms to enable an eager undergraduate student
+to read your piece without having to consult
+too many references.
+
+For readers intrigued by your exposition,
+you should provide friendly references.
+Bibliographies may contain suggested reading along with sources actually referenced.  In all cases,
+cite sources that are currently and readily available.
+
+\LaTeX\ has a way to keep track of references automatically,
+which is illustrated in the code that ends this file.  To refer
+to Halmos~\cite{Halmos}, you use a codename that you have created
+as a mnemonic, often the author's last name.
+ \LaTeX\
+ keeps track, numbering the references in
+the order they appear in your list.  If you add a reference
+(positioning it correctly in the list) the numbers will be adjusted accordingly.
+
+Please follow our bibliographic format carefully, based
+on the examples below.  Entries may appear either in alphabetical
+order or in order of citation (but choose one order and
+stick to it).   Journal titles are abbreviated
+as in \emph{Mathematical Reviews},
+for instance, \textit{Amer. Math. Monthly}; volume numbers
+of journals are set in \textbf{bold}.  Authors names are
+not inverted: Frank A. Farris, not Farris, Frank A.~\cite{Farris}.
+The abbreviation pp. is used for books, but not journal
+articles.  Note the slightly different style for
+citing articles in the \textsc{Magazine}.
+
+
+\paragraph*{How to do things in \LaTeX}
+
+Roman letters used as variables will be correctly
+italicized if enclosed with \$s in your code, as in ``functions $f$, $g$, and $h$.''
+This makes for typing lots of \$s when writing in \TeX.
+Other popular fonts are $\mathcal A$, for sets and the like, and
+${\mathbb Z}$ for the integers, etc.
+
+This last symbol, the ``blackboard'' ${\mathbb Z}$, actually
+is not part of basic \LaTeX.  If you look in the \textit{preamble}
+of this document, the part before the \verb+\begin{document}+
+command, you will see the instruction \verb+\usepackage{amssymb}+ .
+This enables you to use the blackboard font, as well as certain special symbols:
+$$\lceil \  , \rceil \  , \lfloor \  , \rfloor  \ , \mathrm {\ and  \ so \  on.}$$
+\noindent
+If you do not have this package, you are welcome to mark these
+symbols in by hand. While we are talking about packages,
+please do not use any package that redefines major environments,
+such as the theorem environment.
+
+\LaTeX\ is able to number theorems automatically,
+using what is called a theorem
+\textit{environment}.  This is usually overkill for pieces in the \textsc{Magazine}.
+The following example shows a simple method for displaying
+theorems; the theorem need not even be numbered unless
+you refer to it by number later.
+
+\textsc{Theorem 1.}
+
+Let $a$ be any real number.   Then $a^2 > -1$.
+
+
+\textit{Proof}.  The result follows from well-known
+properties of flabby sheaf cohomology over algebraically closed
+fields. This parody of a proof, the likes of which you would not see
+in the \textsc{Magazine}, ends here, but you don't need to insert
+an end-of-proof marker.  You could put a comment in the file to mark
+the end of the proof.
+%%End of Proof
+
+
+A remarkable result that has been the target of many proofs in the
+\textsc{Magazine} is the Pythagorean theorem.    If $a$, $b$, and
+$c$ are the sides of a right triangle, then
+\begin{equation}
+a^2+b^2=c^2 .  \label{Pythagoras}
+\end{equation}
+% i modified the next paragraph --- \eqno is obsolete.
+The equation above is called a \textit{displayed equation}.  The
+reference number was added using the equation environment
+(enclosing the code for the equation between
+\verb+\begin{equation}+ and \verb+{\end{equation}+). You should
+give numbers only to those equations that you cite by number
+later; to refer to his equation without having to remember which
+number it had, we gave it a descriptive label, Pythagoras, whose
+use is shown in the code below.  The sentence ended with the
+equation, so we used a period.
+
+It can be shown from equation \ref{Pythagoras}, by means of a
+routine calculation, that $b^2+a^2=c^2$.   Indeed, many related
+equations can be derived, such as these:
+\begin{eqnarray*}
+a^2-c^2 &=& -b^2   \\
+b^2-c^2 &=& -a^2 .
+\end{eqnarray*}
+This is an example of a \LaTeX\ environment that you may find
+useful; it aligns the equations on the equals sign. The asterisk
+in the code \verb+\begin{eqnarray*}+ suppresses numbering.To
+display a single equation without numbering it, enclose the code
+in a pair of double \$s, as shown below.
+
+Another useful environment is \verb+tabular+. Note that
+environments must have \verb+begin+ and \verb+end+ markers.  The
+code that makes the brace shows how \LaTeX\ uses the commands
+\verb+\left+ and \verb+\right+ to
+resize delimiters automatically. This also demonstrates the \verb+\center+
+environment.
+\vskip 2mm
+\begin{center}
+$$\left (
+\begin{tabular}{lcr}
+This text & is arranged& in a table\\
+with an ampersand \& & to delimit& columns\\
+and double & backslashes& to end rows.
+\end{tabular}
+\right )$$
+\vspace{3mm}
+\end{center}
+The main point of your interesting Article
+might be illustrated by something like \textsc{Figure 1},
+which I did not include in this template, partly because it's fictional,
+but also because I would have had to provide an additional
+electronic file for you to download (presumably
+in \textit{encapsulated PostScript} format, eps).
+Figures should have brief explanatory captions,  like
+\verb+Figure 1 Worth 1000 words+, without
+a period at the end.
+Figures may be included in the printed output, using
+a package such as \verb+epsfig+.
+The simplest alternative is to put the figures
+at the end, and note:   \textbf{FIGURE 1 GOES NEAR HERE}.
+
+In the previous paragraph, a portion of the
+text hangs out into the right margin.  \TeX\ did not
+know how to hyphenate the verbose text string.  In
+preparing your manuscript, you do not need to worry about
+things like this.  The line breaks will all change later anyway.
+There is much to say about producing figures that will
+look good in print.  Before you invest a great deal of time
+creating figures, please read the detailed Electronic
+Production Guidelines~\cite{MAA}.  Here, suffice it to say
+that we strongly prefer PostScript formats for figures.
+Programs such as \textit{Maple} and \textit{Mathematica}
+give you the option of saving pictures this way.  \textit{Geometer's Sketchpad} does not,
+but our compositor knows
+how to handle this type of file.
+
+\paragraph*{Conclusion}
+Now replace all the text in this file with a crackling exposition of
+a sweeping mathematical panorama, \TeX\ it up, and send three hard copies to:
+\vskip 3mm
+
+\noindent Frank A. Farris, Editor, \textsc{Mathematics Magazine}, Santa Clara University,\\
+\noindent 500 El Camino Real, Santa Clara, CA 95053-0373
+\vskip 3mm
+
+Electronic submission is possible in limited circumstances;
+ultimately, we need two hard copies to send to referees and one to
+retain.  To request that we do this printing for you, please inquire
+at \verb+mathmag@scu.edu+ or 408-554-4122.
+
+\paragraph*{Acknowledgment}
+We thank our spouses, the anonymous referees, granting agencies, and our moms
+for everything they've done for us.    If the editor
+helped, that's fine, but we don't thank him here
+since he's only doing his job.
+
+
+\begin{thebibliography}{20}
+
+\bibitem{Boas}  R.P. Boas, Can we make mathematics intelligible? \textit{Amer. Math.
+Monthly} \textbf{88} (1981), 727--731.
+
+\bibitem{Farris}  Frank Farris, \textit{A \textsc{Mathematics Magazine} Retrospective}, this \textsc{Magazine}, \textbf{79} (2006), 1-88.
+
+\bibitem{Halmos} Paul Halmos, How to write mathematics,
+\textit{Enseign.  Math.} \textbf{16} (1970), 123--152.  Reprinted in
+Halmos, \textit{Selecta, expository writings}, Vol.  2, Springer, New
+York, 1983, 157--186.
+
+\bibitem{Hwang} Andrew Hwang, Writing in the age of Latex, \textit{AMS
+Notices} \textbf{42} (1995), 878--882.
+
+\bibitem{Knuth}  D.E. Knuth, T. Larrabee, and P.M. Roberts,
+\textit{Mathematical Writing}, MAA Notes \#14, 1989.
+
+\bibitem{Krantz}   Steven G. Krantz, \textit{A Primer of Mathematical Writing},
+American Mathematical Society, 1997.
+
+\bibitem{MAA} Mathematical Association of America, \textit{Electronic
+Production Guidelines}, http://www.maa.org/pubs/bev.html .
+
+\bibitem{Mermin} N. David Mermin, \textit{Boojums All the Way
+Through}, Cambridge Univ.  Pr., Cambridge, UK, 1990.
+
+\end{thebibliography}
+
+
+
+\end{document}
