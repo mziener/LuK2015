@@ -23,6 +23,31 @@ HU Berlin \\
 
 \end{flushright}
 
-ÄÖÜ $ \sqrt[3]{5} $
+Aufgabe 1)\\
+...\\
+TODO\\
+
+Aufgabe 2)\\
+Der Ansatz von Dennis, bei dem es nur eine spezielle Art von Bäumen gibt, klappt meiner Meinung nach nicht. Es muss ja für alle $\Sigma$ Bäume gerader Höhe gezeigt werden.\\
+Idee: Nutze eine der folgenden kontextfreien Grammatiken, um die Baumbeschriftung zu definieren:\\
+$S_0 \rightarrow a(S_1 | \epsilon)$\\
+$S_1 \rightarrow ab S_2 S_3 S_2 S_3$\\
+$S_2 \rightarrow a | S_1 $\\
+$S_3 \rightarrow b | S_1 $\\
+Bei Top-Down Beschriftung ergibt dies Bäume, in denen alle linken Kinder ein a sind und alle rechten Kinder ein B. Die Worte haben die Form aababab... Auf ähnliche Weise lassen sich Grammatiken für Baumbeschriftungen finden, in denen die Ebenen des Baumes abwechselnd a's und b's haben.\\
+Problem: Wir benötigen Kantenrelationen $E_1$ und $E_2$. Das heißt, mit Hilfe der Knotenbeschriftung und Position der Zeichen in dem Wort muss ein MSO-Satz aussagen, wann zwei Knoten inzident sind.\\
+Ansatz: ('y ist linkes Kind von x')\\
+$ E_1(x,y) \iff P_a(y) \land (y>x) \land \forall z ( P_a(z) \rightarrow ( (z>y) \lor (z<x) ) \lor \exists u (u<x \land E_1(u,z))) $\\
+In Worten: y ist ein linkes Kind und kommt nach x und für alle anderen linken Kinder gilt: entweder liegen sie nicht zwischen x und y im Wort oder es existiert ein anderer Knoten u so dass sie das Linke Kind von diesem sind.\\
+Ich bin mir nicht sicher, ob die Rekursion so in Ordnung ist... Bitte um Hilfestellung. :)\\
+
+Aufgabe 3)\\
+Betrachte ich als gelöst.\\
+
+Aufgabe 4)\\
+Als Scan im Verzeichnis.\\
+Idee: Wir benötigen keine weiteren Definitionen und es sollte nicht nötig sein, an der 'Normalform' des SO-Satzes etwas zu ändern.
+Wir müssen nur zeigen, dass wir die Atome auch als Baumautomaten darstellen können. Ich habe im Scan jeweils links den NFA rein textuell aufgeschrieben, rechts den zugehörigen NBA. Dies Hilft uns auf den NBA zu kommen. Da der Baum endlich aber beliebig hoch werden kann, ist es nicht besonders ergiebig diesen aufzuzeichnen. Die Transistionsregeln (Relationen) sollten uns ausreichen.
+Diese haben die Form: (Linker Vorzustand, Rechter Vorzustand, Zeichen, Xj, Xi, Xk, Folgezustand). Rest als Scan.
 
 \end{document}
