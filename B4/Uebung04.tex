@@ -17,7 +17,7 @@ Logik und Komplexität  \textsc{ Übung 4 }
 \end{center}
 
 \begin{flushright}
-Notizen zur dritten Übung\\
+Notizen zur vierten Übung\\
 HU Berlin \\
 
 \vspace{2 mm}
@@ -120,5 +120,15 @@ $\square$
  $ B \models \neg \Psi $
 
 \subsubsection*{Aufgabe 4)}
+IV: Wenn es eine FO-Formel $\Psi$ mit $qr(\Psi) = m$ gibt, so dass $A \models \Psi(\bar{a}) $ und $B \models \neg \Psi(\bar{b}) $, dann gibt es eine Gewinnstrategie für Spoiler.\\
+IA: Sei m = 0. Das heisst, dass die Formel eine quantorenfreie Formel, also eine Boolsche Kombination von atomaren Formeln ist. Sie können also bereits durch ein Atom unterschieden werden. \\
+IS: Sei $qr(\Psi) > 0$, $A \models \Psi(\bar{a}) $ und $B \models \neg \Psi(\bar{b}) $.\\
+$ \Psi(\bar{x}) $ ist eine Formel mit Quantorenrang m-1 und hat die Form $\exists u (\psi(\bar{x}, u))$. Es gibt also mindestens eine solche Formel geben, die A,$\bar{a}$ und B,$\bar{b}$ unterscheidet. Wenn diese Formel den Quantorrang <m besitzt, so gilt nach IV, dass Spoiler eine Gewinnstrategie haben muss. Somit hat dieser natürlich auch eine Strategie für m Runden lange Spiele.\\
+Ansonsten ist eines von beiden der Fall: \\
+$A \models \exists u (\psi(\bar{a}, u)) $ und $B \models \forall u (\neg \psi(\bar{b}, u)) $ \\
+oder $A \models \forall u (\neg \psi(\bar{a}, u)) $ und $B \models \exists u (\psi(\bar{B}, u)) $ \\
+Im ersteren Falle kann Spoiler ein beliebiges Element aus A wählen, so dass die linke Seite erfüllt wird. Für jedes Element, dass Duplicator dann aus B wählen kann gilt dann die rechte Seite. Nach IV gewinnt Spoiler dann alle längeren Spiele. Im zweiteren Fall wählt Spoiler aus B und verfährt analog. Auch hier gewinnt er nach IV alle längeren Spiele. \\ 
 
 \end{document}
+
+
