@@ -1,0 +1,124 @@
+% Article template for Mathematics Magazine
+% Revised 7/2002  Thanks for Greg St. George
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\renewcommand{\baselinestretch}{1.2}
+%This is the command that spaces the manuscript for easy reading
+
+\begin{document}
+%\thispagestyle{empty}
+\begin{center}
+\Large
+% TITLE GOES HERE
+Logik und Komplexität  \textsc{ Übung 4 }
+\end{center}
+
+\begin{flushright}
+Notizen zur dritten Übung\\
+HU Berlin \\
+
+\vspace{2 mm}
+
+\end{flushright}
+
+\subsubsection*{Aufgabe 1)}
+\paragraph*{a)}
+\[ 
+\begin{array}{ccccccc}
+  % \exists X ( &\exists x X(x) &\land \exists y \neg X(y) &\land \forall u \forall v ( &(X(u) \land \neg X(v) ) &\rightarrow (\neg E(u,v) \land &\neg E(v,u) ) ) )\\
+  \exists x X(x) &\land \exists y \neg X(y) &\land \forall u \forall v ( (X(u) \land \neg X(v) ) &\rightarrow (\neg E(u,v) \land &\neg E(v,u) ) ) \\
+  \bigvee_{a\in A} v_a &\land \bigvee_{a\in A}\neg v_a &\land \bigwedge_{a\in A} \bigwedge_{b\in A} ( v_a \land \neg v_b& \rightarrow (\neg 
+  \begin{cases}
+    1&(a,b) \in E \\
+    0&(a,b) \notin E
+  \end{cases}
+  & \land \neg 
+  \begin{cases}
+    1&(b,a) \in E \\
+    0&(b,a) \notin E
+  \end{cases}
+  ) )
+\end{array} \\
+\] 
+
+\[ 
+\begin{array}{rl}
+   &     ( v_1 \lor v_2 \lor v_3) \\
+  \land& (\neg v_1 \lor \neg v_2 \lor \neg v_3) \\
+  \land& ( v_1 \land \neg v_1 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_1 \land \neg v_2 \rightarrow \neg 1  \land \neg 0 ) \\
+  \land& ( v_1 \land \neg v_3 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_2 \land \neg v_1 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_2 \land \neg v_2 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_2 \land \neg v_3 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_3 \land \neg v_1 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_3 \land \neg v_2 \rightarrow \neg 0  \land \neg 0 ) \\
+  \land& ( v_3 \land \neg v_3 \rightarrow \neg 1  \land \neg 1 ) \\
+\end{array}
+ \] 
+ 
+ \paragraph{b)}
+ Erfüllende Belegung ist $v_1, \neg v_3 $
+ d.h.: Erfüllt für $X=\{1\}, X=\{1,2\}$
+ 
+\subsubsection*{Aufgabe 2)}
+Zeige: $Eval_{Fin_{<}}(\Phi)$ für jeden ESO-HORN-Satz $\Phi$ liegt in P.\\
+D.h. es ex. ein det. Algorithmus der bei eingabe einer Endlichen Struktur $\mathfrak{A}$ in Polinomialzeit entscheidet, ob $\mathfrak{A} \models \Phi$ \\
+
+Ein ESO-Horn Satz $\Phi$ besitzt die form:
+\[  \exists X_1 ... \exists X_d \forall y_1 .. \forall y_{d'} \phi \] 
+
+Wobei $\phi$ eine Konjunktion von ESO-Horn formeln ist:
+
+\[ \phi := \bigwedge_{k\in \Gamma} \bigvee_{j\in K} \beta_{k,j} \] 
+
+mit 
+\[ \beta_{k,j} := 
+  \begin{cases}
+    \psi(y_1,...,y_{d'}) & \psi\in FO[\sigma]\\
+    X_i(\bar y) & \bar y \in (\{y_1,...,y_d\}\cup\{c:\text{c ist eine Konstante in }\sigma\})^{ar(X_i)} \\
+    \neg X_i(\bar y)& \bar y \in (\{y_1,...,y_d\}\cup\{c:\text{c ist eine Konstante in }\sigma\})^{ar(X_i)}
+  \end{cases}
+\] 
+
+Aus dem Beweis von Theorem 2.24 konstruieren wir in \textbf{Polinomialzeit} bei eingabe von $\mathfrak{A}$ die Aussagenlogische Formel $\alpha_{\Phi,\mathfrak{A}}$. Diese hat die Form:
+
+\[ \bigwedge_{a_1\in A}... \bigwedge_{a_d'\in A} \bigwedge_{k\in \Gamma} \bigvee_{j\in k} \beta'_{k,j} \] 
+
+mit 
+
+\[ \beta'_{k,j} := 
+  \begin{cases}
+    \psi(a_1,...,a_{d'}) & \psi\in FO[\sigma]\\
+    v_{X_i,(\bar y)} & \bar y \in A^{ar(X_i)} \\
+    \neg v_{X_i,(\bar y)} & \bar y \in A^{ar(X_i)} \\
+  \end{cases}
+\] 
+
+$ \psi(a_1,...,a_{d'}) $ besitzt keine variablen und kann rekursiv in Polinomialzeit ausgewertet werden.
+Somit ist $\Phi$ ein Aussagenlogischer Horn Satz ist, welcher mit dem Streichungsalgorithmus in Polinomialzeit gelöst werden kann.
+$\square$
+
+\subsubsection*{Aufgabe 3)}
+ \paragraph{a)}
+ $A \approx_2 B$ und $A \not\approx_3 B$ \\
+ Gewinnstrategie Duplicator in 2 Runden: 'Wähle jeweils den entsprechenden Knoten aus der anderen Struktur. Sollte Spoiler aus B zwei der unteren äußeren 3 nehmen, wähle gegenüberliegende Knoten.'\\
+ Gewinnstrategie Spoiler in 3 Runden: 'Wähle den linken, unteren und rechten Knoten in B. Denn es gibt keine drei knoten in A, so dass diese paarweise keine Kante haben.'
+ 
+ \paragraph{b)}
+ $\neg \Psi \equiv \exists x \exists y \exists z (x \neq y \land z\neq y \land x \neq z \land 
+ \neg E(x,y) \land 
+ \neg E(y,z) \land 
+ \neg E(x,z))$ \\
+ $ A \models \forall x \forall y \forall z (x = y \lor = y \lor x = z \lor 
+  E(x,y) \lor 
+  E(y,z) \lor 
+  E(x,z))$ \\
+ $ B \models \neg \Psi $
+
+\subsubsection*{Aufgabe 4)}
+
+\end{document}
