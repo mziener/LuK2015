@@ -1,0 +1,97 @@
+% Article template for Mathematics Magazine
+% Revised 7/2002  Thanks for Greg St. George
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\renewcommand{\baselinestretch}{1.2}
+%This is the command that spaces the manuscript for easy reading
+
+\begin{document}
+%\thispagestyle{empty}
+\begin{center}
+\Large
+% TITLE GOES HERE
+Logik und Komplexität  \textsc{ Übung 5 }
+\end{center}
+
+\begin{flushright}
+Notizen zur fünften Übung\\
+HU Berlin \\
+
+\vspace{2 mm}
+
+\end{flushright}
+
+\subsubsection*{Aufgabe 1)}
+\paragraph*{a)}
+
+\subsubsection*{Aufgabe 2)}
+
+IV: $|A|<|B| und |A| \leq 2^{m}$\\
+mit Invariante $(a_j <^A a_{j'}\ und\ b_j \geq^B b_{j'})\ oder\ (a_j \geq^A a_{j'}\ und\ b_j <^B b_{j'})$\\
+oder $Dist(a_j,a_{j'}) < 2^{m-i}\ und\ Dist(a_j,a_{j'}) < Dist(b_j,b_{j'})$\\
+IA: i=0.\\
+Der zweite Teil der Invariante ist erfüllt, da nach IV $|A|<|B|$, somit ist für die vorgegebenen Knoten $Dist(a_j,a_{j'}) < Dist(b_j,b_{j'})$ erfüllt. 
+Die Distanz von $a_1,a_2$ kann maximal $2^{m}-1$ sein, nach Definition der Distanzfunktion (Der erste Knoten selbst wird nicht mitgezählt). Somit ist der linke Teil der Invariante ($Dist(a_j,a_{j'}) < 2^{m-i}\ $) ebenfalls erfüllt. \\
+IS: $i\rightarrow i+1$ \\
+Spoilers Gewinnstrategie ist es, ein Halbierungsverfahren auf B durchzuführen. Wir zeigen, dass egal wie Duplicator auf diese Strategie reagiert, die Invariante erfüllt bleibt. 
+Spoiler wählt also $b_{2+i+1}$ s.d. $b_j < b_{2+i+1} < b_{j'}$  und $Dist(b_j, b_{2+i+1}) = 2^{m-(i+1)}$ mit j,j'$\in \{1,..,2+i\}$.\\
+Duplicator wählt nun aus A.\\
+Fall 1: $a_{2+i+1}=a_j$. Die Invariante ist erfüllt, da die Distanz 0 ist.\\
+Fall 2: $a_{2+i+1} <^A a_j\ oder\  a_{2+i+1} >^A a_{j'}$ ist ungünstig für Duplicator, da es die Invariante erfüllt.\\
+Fall 3: $Dist(a_j,a_{2+i+1}) = Dist(b_j,b_{2+i+1})$\\
+  Es folgt $Dist(a_j,a_{j'}) < Dist(b_j,b_{j'}) \Rightarrow Dist(a_{2+i+1},a_{j'}) < Dist(b_{2+i+1},b_{j'})$\\
+  Da $Dist(b_{2+i+1},b_{j'})\geq 2^{m-(i+1)} \Rightarrow Dist(a_{2+i+1},a_{j'})<2^{m-(i+1)}$ \\
+Fall 4: $Dist(a_j,a_{2+i+1}) < Dist(b_j,b_{2+i+1})$\\
+  Da $Dist(b_{2+i+1},b_{j'}) \geq 2^{m-(i+1)} \Rightarrow Dist(a_j,a_{2+i+1}) < 2^{m-(i+1)} $\\
+Fall 5: $Dist(a_j,a_{2+i+1}) > Dist(b_j,b_{2+i+1})$\\
+  $Dist(a_{2+i+1},a_j) < 2^{m-i}-Dist(a_j,a_{2+i+1})\ und\ Dist(a_j,a_{2+i+1})>2^{m-(i+1)}$\\
+  $\Rightarrow 2^{m-i}-Dist(a_j,a_{2+i+1}) < 2^{m-(i+1)}$\\
+
+
+\subsubsection*{Aufgabe 3)}
+Nach Skript 3.13 gibt es endlich viele Sätze der Quantorentiefe 0. Aufbauend darauf wurde gezeigt, dass es nur endlich viele Hintikka-Formeln gibt.
+Wir beweisen, dass es nur endlich viele verschiedene FO[$\sigma$]-Formeln mit k freien Variablen und Quantortiefe m gibt per Induktion nach m.
+Dabei betrachten wir nur Formeln bestejend aus Disjunktion, Negation und Existensquantoren, da alle anderen durch diese formuliert werden können.\\
+Hierbei sei $\Phi_m(\bar x)$ die Menge aller Formeln vom Quantorrang m mit den Variablen $\bar x=x_1 ... x_{k'}$\\
+
+IV: Es gibt endlich viele FO[$\sigma$]-Formeln mit k freien Variablen und Quantortiefe m.\\
+IA: m=0. Laut 3.13 gibt es endlich viele Formeln $\phi_0(\bar x) \in \Phi_0(\bar x)$.\\
+IS: m+1. Wir betrachten alle Möglichkeiten die Menge an verschiedenen Formeln mit Hilfe des neuen Quantors zu erweitern.\\
+$\exists y \phi_m(\bar x, y),  phi_m(\bar x, y) \in \Phi_m(\bar x, y)$\\
+  Wobei wir nach IV wissen, dass $\Phi_m(\bar x, y)$ endlich ist. $\bar x$ hat k' viele Elemente. Eines hinzuzufügen ändert an der Endlichkeit nichts, da k' wie auch k beliebig aber fest und endlich sind. \\
+Wenn wir $\exists y \phi_m(\bar x, y)$ als Atom betrachten, dann gibt es wieder endlich viele Möglichkeiten Formeln über den neuen Quantor zu bilden. Dies wissen wir bereits aus 3.13.
+
+
+\subsubsection*{Aufgabe 4)}
+ 
+ \paragraph{a)}
+ Notiz: Ob dieser Beweis sauber und stimmig ist, bin ich mir nicht sicher. \\
+ Notiz 2: Die Behauptung scheint generell nur zu stimmen, wenn alle Elemente in irgendeiner Relation stehen, oder? Hätten wir im Beispiel von Aufgabe b) auch ungefärbte Knoten, also Knoten die weder in R noch in B sind, dann bricht die Behauptung zusammen... Wurde dieser Fall irgendwo wegdefiniert und ich habe es übersehen?\\
+ Beweis durch Kontraposition. Angenommen Spoiler könnte in m Runden oder weniger gewinnen (sei m' $leq$ m). Das würde bedeuten, der größte partielle Isomorphismus über eine beliebige Teilmenge der neuen Strukturen ist kleiner als m. Diese beliebige Teilmenge kann nicht in ausschließlich in einer der beiden Strukturenpaare liegen, da wir wissen, dass der größte partielle Isomorphismus jeweils m ist. Aber dies kann nicht sein, da es zu größeren partiellen Isomorphismen führt aus beiden Teilstrukturen zu wählen. Wenn bereits k Elemente aus Teilstruktur $A_1$ gewählt wurden und j aus $A_2$ mit k > j, k,j < m, dann lässt sich immer ein Element finden, welches Duplicator der Abbildung hinzufügen kann. Es folgt m' $geq$ m.\\
+Angenommen m' $geq$ m. Wähle als Gewinnstrategie für Spoiler: Betrachte nur Teilstrukturen $A_1,B_1$ und spiele die m Runden Gewinnstrategie. Duplicator muss immer mit einem Element aus der Teilstruktur $B_1$ antworten, da dieses in der bzw. den selben Relationen stehen muss, wie das Element aus $A_1$. Diese existieren aber in $B_2$ nicht.
+  
+ \paragraph{b)}
+ Zunächst geben wir eine Gewinnstrategie für Spoiler an. Strategie: Wähle immer die Menge mit den wenigsten Elementen, also min($k_1,k_2,l_1,l_2$). Ziehe aus der Menge der jeweils anderen Struktur solange, bis Duplicator die Elemente ausgehen. 
+ Aus der Gewinnstrategie leitet sich ab, dass m = min($k_1,k_2,l_1,l_2$). \\
+ Fall 1: Sei eine der roten Knotenmengen dieses Minimum. \\
+ Wir nehmen an, dies sei $k_1$. Es folgt, dass $k_1$=m und $k_2 >$  m ist. Für $k_1=k_2$ gilt, Spoiler hat keine Gewinnstrategie. Dies impliziert dann auch, dass $l_1=l_2$ ist. Folglich gilt: ($k_1=k_2 \lor (k_1 = m \land k_2 > m$))
+ Es folgt weiter, dass $l_1,l_2 \geq$ m sind. Sollte eines der beiden gleich m sein, so sind die Gewinnstrategien auf beiden Farben gleich gut. Nur wenn $l_1=l_2$ ist, dürfen sie kleiner als m sein, da dies eine Gewinnstrategie für Spoiler ausschließt. Es gilt: ($l_1=l_2 \lor l_1,l_2 \geq m$)\\ 
+ Zusammen:\\
+ ($k_1=k_2 \lor (k_1 = m \land k_2 > m)) \land (l_1=l_2 \lor l_1,l_2 \geq m$)\\
+ Fall 2: Analog zu Fall 1, nur dass $l_1$ das Minimum ist. Als Formel folgt:\\
+ ($l_1=l_2 \lor (l_1 = m \land l_2 > m)) \land (k_1=k_2 \lor k_1,k_2 \geq m$)\\
+ Fall 3: min($k_1,k_2,l_1,l_2$) = $k_2$ ...\\
+ Fall 4: min($k_1,k_2,l_1,l_2$) = $l_2$ ...\\
+ Wir wissen, es tritt einer dieser Fälle auf, also:\\
+ (($l_1=l_2 \lor (l_1 = m \land l_2 > m)) \land (k_1=k_2 \lor k_1,k_2 \geq m)) \lor ((k_1=k_2 \lor (k_1 = m \land k_2 > m)) \land (l_1=l_2 \lor l_1,l_2 \geq m)) \lor $\\
+  (($l_1=l_2 \lor (l_2 = m \land l_1 > m)) \land (k_1=k_2 \lor k_1,k_2 \geq m)) \lor ((k_1=k_2 \lor (k_2 = m \land k_1 > m)) \land (l_1=l_2 \lor l_1,l_2 \geq m$))\\
+ Welches sich zu folgendem vereinfachen lässt:\\
+ ($k_1=k_2 \lor k_1,k_2 \geq m) \land (l_1=l_2 \lor l_1,l_2 \geq m$) \\
+ q.e.d.\\
+ 
+\end{document}
+
+
